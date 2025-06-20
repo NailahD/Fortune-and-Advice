@@ -18,12 +18,13 @@ async function main() {
     console.log("MongoDB connected");
 
     const db = client.db("Cookie");
-    const itemsCollection = db.collection("items");
+    const itemsCollection = db.collection("fortunes");
 
     // GET route
-    app.get("/Cookie/items", async (req, res) => {
-      const items = await itemsCollection.find().toArray();
-      res.json(items);
+    app.get("/api/fortunes", async (req, res) => {
+      const fortunes = await itemsCollection.find().toArray();
+      console.log("Fetched from MongoDB:", fortunes);
+      res.json(fortunes);
     });
 
     app.listen(PORT, () => {

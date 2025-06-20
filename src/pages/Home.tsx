@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
     <div>
       <h1>Welcome, traveler!</h1>
       <p>
-        <button>I Need Advice!</button>
+        <Link to="/Advice">I Need Advice!</Link>
       </p>
       <p>
-        <button>Tell My Fortune!</button>
+        <Link to="/Fortune2">Tell My Fortune!</Link>
       </p>
     </div>
   );
