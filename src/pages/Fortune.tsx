@@ -1,24 +1,37 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-// const Fortune: React.FC = () => {
-//   const [fortune, setFortune] = useState<string>("");
+const Fortune: React.FC = () => {
+  const [fortune, setFortune] = useState<string>("");
 
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:5000/api/items")
-//       .then((response) => setFortune(response.data.fortune))
-//       .catch((error) =>
-//         console.error("Your fortune is shrouded in mist:", error)
-//       );
-//   }, []);
+  const getFortune = () => {
+    axios
+      .get("http://localhost:5000/api/fortunes")
+      .then((response) => {
+        const items = response.data;
+        if (items.length > 0) {
+          const randomIndex = Math.floor(Math.random() * items.length);
+          setFortune(items[randomIndex].content);
+        } else {
+          setFortune("Your fortune is shrouded in mist...");
+        }
+      })
+      .catch((error) =>
+        console.error("The stars are not in alignment...", error)
+      );
+  };
 
-//   return (
-//     <div>
-//       <h1>Tell My Fortune</h1>
-//       <p>{fortune || "Patience is a virtue..."}</p>
-//     </div>
-//   );
-// };
+  useEffect(() => {
+    getFortune();
+  }, []);
 
-// export default Fortune;
+  return (
+    <div>
+      <h1>Tell My Fortune</h1>
+      <button onClick={getFortune}>Reveal Fortune 🍪</button>
+      <p>{fortune || "Click the cookie to reveal your fate..."}</p>
+    </div>
+  );
+};
+
+export default Fortune;

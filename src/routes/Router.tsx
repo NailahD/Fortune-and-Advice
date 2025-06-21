@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Advice from "../pages/Advice";
 import Home from "../pages/Home";
-import Fortune2 from "../pages/Fortune2";
+import Fortune2 from "../pages/Fortune";
 
 const Router: React.FC = () => {
   return (
