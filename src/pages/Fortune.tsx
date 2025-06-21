@@ -29,7 +29,7 @@ const Fortune: React.FC = () => {
     <div>
       <h1>Tell My Fortune</h1>
       <button onClick={getFortune}>Reveal Fortune 🍪</button>
-      <p>{fortune || "Click the cookie to reveal your fate..."}</p>
+      <p>{fortune || "Eat a cookie..."}</p>
     </div>
   );
 };
